@@ -1,0 +1,11 @@
+# Node modules
+node_modules
+
+# Environment variables
+.env
+
+# Dist
+dist
+
+# OS
+.DS_Store
