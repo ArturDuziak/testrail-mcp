@@ -2,7 +2,7 @@
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
-import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
+import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
@@ -39,8 +39,8 @@ const makeTestrailRequest = async (path: string, method: string, body: Record<st
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [{
-      name: "add-project",
-      description: "Adds new TestRail project",
+      name: 'add-project',
+      description: 'Adds new TestRail project',
       inputSchema: {
         type: 'object',
         properties: {
@@ -86,7 +86,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
   switch (name) {
-    case "add-project": {
+    case 'add-project': {
       const addArgs = args as { name: string, show_announcement?: boolean, announcement?: string, suite_mode?: number };
 
       const addResponse = await makeTestrailRequest('add_project', 'POST', addArgs);
@@ -95,12 +95,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         content: [
           {
             type: 'text',
-            text: "Response details: " + JSON.stringify(addResponse)
+            text: 'Response details: ' + JSON.stringify(addResponse)
           }
         ]
       }
     }
-    case "delete-project": {
+    case 'delete-project': {
       const deleteArgs = args as { id: number };
 
       const deleteResponse = await makeTestrailRequest(`delete_project/${deleteArgs.id}`, 'POST', {});
@@ -109,7 +109,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         content: [
           {
             type: 'text',
-            text: "Response details: " + (deleteResponse ?? JSON.stringify(deleteResponse))
+            text: 'Response details: ' + (deleteResponse ?? JSON.stringify(deleteResponse))
           }
         ]
       }
