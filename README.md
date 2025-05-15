@@ -16,6 +16,28 @@ After installing dependencies, you have to build the project by running `pnpm bu
 
 ## Available Tools
 
+### Get projects - `get-projects`
+
+Returns the list of available TestRail projects.
+
+```json
+{
+  "is_completed": 0,
+  "limit": 250,
+  "offset": 0
+}
+```
+
+### Get project - `get-project`
+
+Returns a TestRail project with the given ID.
+
+```json
+{
+  "id": 1
+}
+```
+
 ### Add new project - `add-project`
 
 Adds a new Testrail project with the given name.
@@ -36,5 +58,19 @@ Deletes a Testrail project with the given ID.
 ```json
 {
   "id": 1
+}
+```
+
+### Update project - `update-project`
+
+Updates a Testrail project with the given ID.
+
+```json
+{
+  "id": 1,
+  "name": "Project X",
+  "show_announcement": true,
+  "announcement": "Welcome to project X",
+  "suite_mode": 1
 }
 ```
